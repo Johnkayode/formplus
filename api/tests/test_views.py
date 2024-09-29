@@ -17,9 +17,10 @@ def test_update_forms(client):
     data = response.get_json()
     id = data["_id"]
     data["title"] = "Updated Form"
-
+    print("id", id)
     response = client.put(f'/forms/{id}', json=data)
     data = response.get_json()
+    print(data)
     assert response.status_code == 200
     assert data["title"] == "Updated Form"
 

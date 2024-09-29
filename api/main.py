@@ -17,6 +17,7 @@ from schemas import (
     FormSubmissionSchema,
     FormSubmissionsSchema,
     FormTimeSeriesSchema,
+    UpdateFormSchema,
     APIErrorSchema,
 )
 from validators import FormValidator
@@ -90,7 +91,7 @@ class RetrieveUpdateFormResource(MethodResource, Resource):
 
         return FormSchema().load(form)
 
-    @use_kwargs(CreateFormSchema)
+    @use_kwargs(UpdateFormSchema)
     @marshal_with(FormSchema, description="Update a form by its id", code=200)
     @marshal_with(APIErrorSchema, code=400)
     def put(self, id: str, **kwargs):

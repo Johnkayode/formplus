@@ -42,12 +42,11 @@ class SectionSchema(Schema):
     description = mm_fields.Str(required=False)
     fields = mm_fields.List(mm_fields.Nested(FieldSchema), required=False)
 
-    class Meta:
-        dump_only = ["created_at"]
-
 
 class UpdateSectionSchema(Schema):
     id = mm_fields.Str(required=True)
+    title = mm_fields.Str(required=False)
+    description = mm_fields.Str(required=False)
     fields = mm_fields.List(mm_fields.Nested(FieldSchema), required=False)
 
 
@@ -70,6 +69,9 @@ class CreateFormSchema(Schema):
 
 class UpdateFormSchema(CreateFormSchema):
     sections = mm_fields.List(mm_fields.Nested(UpdateSectionSchema), required=True)
+
+    class Meta:
+        unknown = EXCLUDE
 
 
 class FormSchema(CreateFormSchema):
