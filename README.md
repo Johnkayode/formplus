@@ -3,7 +3,8 @@
 [![CI Status](https://github.com/Johnkayode/formplus/actions/workflows/test.yml/badge.svg)](https://github.com/Johnkayode/formplus/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-Note: This project is a submission.
+> [!NOTE]
+> This project is a submission.
 
 - **Framework**: Python/Flask
 - **Database**: MongoDB
@@ -26,8 +27,7 @@ Note: This project is a submission.
 5. The API will be running on `http://localhost:5500` 
 
 ## API Documentation
-
-Swagger Docs: [http://localhost:5500/swagger/ui](`http://localhost:5500/swagger/ui/#/`)
+Swagger Docs: [http://localhost:5500/swagger/ui](http://localhost:5500/swagger/ui/#/)
 
 ## Testing
 Test environment is set up with Github Actions.
