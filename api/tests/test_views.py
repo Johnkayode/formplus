@@ -7,7 +7,6 @@ def test_create_forms(client):
     response = client.post('/forms', json=data)
     
     assert response.status_code == 201
-    data = response.get_json()
 
 
 def test_update_forms(client):

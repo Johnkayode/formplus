@@ -63,12 +63,12 @@ class ListCreateFormResource(MethodResource, Resource):
     @use_kwargs(CreateFormSchema)
     @marshal_with(FormSchema, description="Create a new form.", code=201)
     def post(self, **kwargs):
+        print(kwargs)
         data = CreateFormSchema().dump(kwargs)
         form = db.forms.insert_one(data)
         form = db.forms.find_one({"_id": form.inserted_id})
-
-        return FormSchema().load(form)
-
+        return FormSchema().load(form), 201
+        
 
 class RetrieveUpdateFormResource(MethodResource, Resource):
     """
@@ -142,8 +142,7 @@ class SubmitFormResource(MethodResource, Resource):
         
         submission = db.submissions.insert_one(data)
         submission = db.submissions.find_one({"_id": submission.inserted_id}) 
-       
-        return FormSubmissionSchema().dump(submission)
+        return submission, 201
        
 
 class FormSubmissionsResource(MethodResource, Resource):
