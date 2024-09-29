@@ -1,0 +1,35 @@
+{
+    "title": "Sample Form",
+    "description": "Sample Description",
+    "metadata": {
+        "theme": "#000000"
+    },
+    "quota": 1000,
+    "sections": [
+        {
+            "title": "Section I",
+            "description": "Biodata",
+            "fields": [
+                {
+                "description": "",
+                "field_type": "short_text",
+                "label": "First Name",
+                "required": true
+                },
+                {
+                "description": "",
+                "field_type": "short_text",
+                "label": "Last Name",
+                "required": true
+                },
+                {
+                "description": "Gender",
+                "field_type": "dropdown",
+                "label": "Gender",
+                "options": ["Male", "Female", "Other"],
+                "required": true
+                }
+            ]
+        }
+    ]
+}

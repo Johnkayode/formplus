@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  MONGO_DB_URI: mongodb://localhost:27017/formplus
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    services:
+      
+      mongodb:
+        image: mongo:jammy
+        ports:
+          - 27017:27017
+        env:
+            MONGO_INITDB_DATABASE: formplus-test
+        options: >-
+          --health-cmd "echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v1
+        with:
+          version: "latest"
+
+      - name: Install dependencies
+        run: pip install -r api/requirements.txt
+
+      - name: Format
+        run: black .
+
+      - name: Run test suite
+        run: pytest
