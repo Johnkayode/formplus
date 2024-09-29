@@ -13,6 +13,7 @@ class FieldValidator:
             FieldTypes.PARAGRAPH.value,
             FieldTypes.FILE.value,
         ]
+
         if field["field_type"] in str_required_field_types and not isinstance(
             value, str
         ):
