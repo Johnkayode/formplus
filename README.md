@@ -38,7 +38,7 @@ pytest
 ```
 
 ## Examples
-- **Create A New Form**: `POST /forms/`
+**Create A New Form**: `POST /forms/`\
   Request Body:
     ```json
     {
@@ -77,7 +77,7 @@ pytest
         ]
     }
     ```
-- **Submit response to a form**: `POST /forms/{form-id}/submit`
+**Submit response to a form**: `POST /forms/{form-id}/submit`\
   Request Body:
     ```json
     {
@@ -85,7 +85,7 @@ pytest
             "section_id": {
                 "field_id_1": "Dwight",
                 "field_id_2": "Shrute",
-                "field_id_3: 0
+                "field_id_3": 0
             }
         }
     }
