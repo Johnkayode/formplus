@@ -61,7 +61,7 @@ class ListCreateFormResource(MethodResource, Resource):
         return FormSchema().load(forms, many=True)
 
     @use_kwargs(CreateFormSchema)
-    @marshal_with(FormSchema, description="Create a new form.")
+    @marshal_with(FormSchema, description="Create a new form.", code=201)
     def post(self, **kwargs):
         data = CreateFormSchema().dump(kwargs)
         form = db.forms.insert_one(data)
@@ -151,7 +151,7 @@ class FormSubmissionsResource(MethodResource, Resource):
     init_every_request = False
 
     @marshal_with(
-        FormSubmissionsSchema, description="Retrieve form submissions", code=200
+        FormSubmissionsSchema, description="Retrieve form submissions", code=201
     )
     @marshal_with(APIErrorSchema, code=400)
     def get(self, id: str, **kwargs):
