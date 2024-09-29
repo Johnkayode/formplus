@@ -152,7 +152,7 @@ class FormSubmissionsResource(MethodResource, Resource):
     init_every_request = False
 
     @marshal_with(
-        FormSubmissionsSchema, description="Retrieve form submissions", code=201
+        FormSubmissionsSchema, description="Retrieve form submissions"
     )
     @marshal_with(APIErrorSchema, code=400)
     def get(self, id: str, **kwargs):

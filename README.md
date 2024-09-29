@@ -37,3 +37,57 @@ Run locally by setting up a test database and running the tests:
 pytest
 ```
 
+## Examples
+- **Create A New Form**: `POST /forms/`
+  Request Body:
+    ```json
+    {
+        "title": "Sample Form",
+        "description": "Sample Description",
+        "metadata": {
+            "theme": "#000000"
+        },
+        "quota": 1000,
+        "sections": [
+            {
+                "title": "Section A",
+                "description": "Description",
+                "fields": [
+                    {
+                    "description": "",
+                    "field_type": "short_text",
+                    "label": "First Name",
+                    "required": true
+                    },
+                    {
+                    "description": "",
+                    "field_type": "short_text",
+                    "label": "Last Name",
+                    "required": true
+                    },
+                    {
+                    "description": "Gender",
+                    "field_type": "dropdown",
+                    "label": "Gender",
+                    "options": ["Male", "Female", "Other"],
+                    "required": true
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+- **Submit response to a form**: `POST /forms/{form-id}/submit`
+  Request Body:
+    ```json
+    {
+        "sections": {
+            "section_id": {
+                "field_id_1": "Dwight",
+                "field_id_2": "Shrute",
+                "field_id_3: 0
+            }
+        }
+    }
+    ```
+
