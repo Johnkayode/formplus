@@ -64,7 +64,7 @@ class CreateFormSchema(Schema):
         ),
     )
     is_open = mm_fields.Bool(load_default=True, required=False)
-    created_at = mm_fields.DateTime(load_default=lambda: datetime.now())
+    created_at = mm_fields.DateTime()
 
 
 

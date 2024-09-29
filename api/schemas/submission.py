@@ -1,4 +1,3 @@
-from datetime import datetime
 from marshmallow import (
     fields as mm_fields,
     Schema,
@@ -13,7 +12,7 @@ class CreateFormSubmissionSchema(Schema):
         values=mm_fields.Dict(keys=mm_fields.Str(), values=ValueField()),
         required=True,
     )
-    created_at = mm_fields.DateTime(load_default=lambda: datetime.now())
+    created_at = mm_fields.DateTime()
 
 
 class FormSubmissionSchema(CreateFormSubmissionSchema):

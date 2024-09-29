@@ -1,4 +1,5 @@
 from bson import ObjectId, errors
+from datetime import datetime
 from decouple import AutoConfig
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
@@ -63,8 +64,8 @@ class ListCreateFormResource(MethodResource, Resource):
     @use_kwargs(CreateFormSchema)
     @marshal_with(FormSchema, description="Create a new form.", code=201)
     def post(self, **kwargs):
-        print(kwargs)
-        data = CreateFormSchema().dump(kwargs)
+        data = { 'created_at': datetime.now().astimezone(), **kwargs }
+        data = CreateFormSchema().dump(data)
         form = db.forms.insert_one(data)
         form = db.forms.find_one({"_id": form.inserted_id})
         return FormSchema().load(form), 201
@@ -132,7 +133,7 @@ class SubmitFormResource(MethodResource, Resource):
 
 
 
-        data = {"form_id": id, **kwargs}
+        data = {"form_id": id, 'created_at': datetime.now().astimezone(), **kwargs}
         validator = FormValidator(form)
 
         try:
