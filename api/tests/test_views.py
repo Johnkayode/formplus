@@ -45,6 +45,9 @@ def test_update_forms(client):
 
 
 def test_submit_closed_form(client):
+    """
+    Test submit response to a closed form.
+    """
     # create closed form
     f = open('tests/payload.json')
     data = json.load(f)
@@ -71,6 +74,9 @@ def test_submit_closed_form(client):
 
 
 def test_submit_valid_form(client):
+    """
+    Test submit valid form response successfully.
+    """
     # create form
     f = open('tests/payload.json')
     data = json.load(f)
@@ -96,6 +102,9 @@ def test_submit_valid_form(client):
 
 
 def test_submit_invalid_form(client):
+    """ 
+    Test submit invalid field option in form response.
+    """
     # create form
     f = open('tests/payload.json')
     data = json.load(f)
@@ -119,6 +128,9 @@ def test_submit_invalid_form(client):
 
 
 def test_submit_missing_required_fields(client):
+    """
+    Test submit missing form required fields.
+    """
     # create form
     f = open('tests/payload.json')
     data = json.load(f)
@@ -141,6 +153,9 @@ def test_submit_missing_required_fields(client):
 
 
 def test_retrieve_submissions(client):
+    """
+    Test retrieve submissions successfully.
+    """
     # create form
     f = open('tests/payload.json')
     data = json.load(f)
