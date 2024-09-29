@@ -1,6 +1,6 @@
 # Formplus API
 
-[![CI Status](https://github.com/johnkayode/formplus/workflows/test/badge.svg)](https://github.com/johnkayode/formplus/actions)
+[![CI Status](https://github.com/Johnkayode/formplus/actions/workflows/test.yml/badge.svg)](https://github.com/Johnkayode/formplus/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
 Note: This project is a submission.
