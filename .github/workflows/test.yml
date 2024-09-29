@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  MONGO_DB_URI: mongodb://localhost:27017/formplus
+  MONGO_DB_URI: mongodb://localhost:27017/formplus-test
 
 jobs:
   test:
@@ -21,7 +21,7 @@ jobs:
         env:
             MONGO_INITDB_DATABASE: formplus-test
         options: >-
-          --health-cmd "echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet"
+          --health-cmd "echo 'db.runCommand("ping").ok' | mongosh localhost:27017/formplus-test --quiet"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -34,10 +34,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - uses: astral-sh/setup-uv@v1
-        with:
-          version: "latest"
-
       - name: Install dependencies
         run: pip install -r api/requirements.txt
 
@@ -45,4 +41,5 @@ jobs:
         run: black .
 
       - name: Run test suite
+        working-directory: ./api
         run: pytest
