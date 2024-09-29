@@ -18,7 +18,7 @@
     ```
 3. Configure environment:
    ```bash
-   cp .env.example .env
+   cp .env.template .env
    ```
 4. Build and run the services:
     ```bash
